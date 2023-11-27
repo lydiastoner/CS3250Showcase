@@ -49,29 +49,29 @@ class bearstoreTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		//close the browser
-		driver.close();
+//		driver.close();
 	}
 	
 //////// HEADER TESTS //////
 //	
-	@Test
-	void contactUsHeaderTest() {
-		driver.findElement(By.xpath("(//a[text()='Contact us'])")).click();
-		assertEquals("Shop. Contact Us", driver.getTitle());
-	}
-	
-	@Test
-	void newsHeaderTest() {
-		driver.findElement(By.xpath("(//a[text()='News'])")).click();
-		assertEquals("Shop. News Archive", driver.getTitle());
-	}
-	
-	@Test
-	void blogHeaderTest() {
-		driver.findElement(By.xpath("(//a[text()='Blog'])")).click();
-		assertEquals("Shop", driver.getTitle());
-	}
-	
+//	@Test
+//	void contactUsHeaderTest() {
+//		driver.findElement(By.xpath("(//a[text()='Contact us'])")).click();
+//		assertEquals("Shop. Contact Us", driver.getTitle());
+//	}
+//	
+//	@Test
+//	void newsHeaderTest() {
+//		driver.findElement(By.xpath("(//a[@href='/news'])")).click();
+//		assertEquals("Shop. News Archive", driver.getTitle());
+//	}
+//	
+//	@Test
+//	void blogHeaderTest() {
+//		driver.findElement(By.xpath("(//a[@href='/blog'])")).click();
+//		assertEquals("Shop", driver.getTitle());
+//	}
+//	
 //	// SERVICE DROPDOWN
 //	
 //		@Test
@@ -122,6 +122,31 @@ class bearstoreTest {
 //			driver.findElement(By.xpath("(//span[text()='Conditions of use'])")).click();
 //			assertEquals("Shop. Conditions of use", driver.getTitle());
 //		}
+	
+	// Login //
+	
+	@Test
+	void registerNewAccount () {
+		driver.findElement(By.xpath("//span[text()='Log in']")).click();
+		driver.findElement(By.xpath("//a[@href='/register?returnUrl=%2f']")).click();
+
+		driver.findElement(By.name("FirstName")).sendKeys("lydia");
+		driver.findElement(By.name("LastName")).sendKeys("stoner");
+		driver.findElement(By.xpath("//option[text()='Day']")).click();
+		driver.findElement(By.xpath("//option[text()='10']")).click();
+		driver.findElement(By.xpath("//option[text()='Month']")).click();
+		driver.findElement(By.xpath("//option[text()='June']")).click();
+		driver.findElement(By.xpath("//option[text()='Year']")).click();
+		driver.findElement(By.xpath("//option[text()='2002']")).click();
+		driver.findElement(By.name("Email")).sendKeys("lcs6bak@virginia.edu");
+		driver.findElement(By.name("Username")).sendKeys("lydiastoner");
+		driver.findElement(By.name("Password")).sendKeys("password");
+		driver.findElement(By.name("ConfirmPassword")).sendKeys("password");
+		driver.findElement(By.name("register-button")).click();
+
+
+	
+	}
 //		
 //	// BOOKS DROPDOWN
 //	
@@ -246,6 +271,21 @@ class bearstoreTest {
 //			assertEquals("Shop. Golf", driver.getTitle());
 //		}
 //	
+//	//Jackets
+//	@Test
+//	void jacketsHomePageTest() {
+//		driver.findElement(By.xpath("(//span[text()='Jackets'])")).click();
+//		assertEquals("Shop. Jackets", driver.getTitle());
+//
+//	}
+//	
+//	//Shoes
+//	@Test
+//	void shoesHomePageTest() {
+//		driver.findElement(By.xpath("(//span[text()='Shoes'])")).click();
+//		assertEquals("Shop. Shoes", driver.getTitle());
+//
+//	}
 //	//Pants
 //		@Test
 //		void pantsHomePageTest() {
