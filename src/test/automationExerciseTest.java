@@ -49,12 +49,46 @@ class automationExerciseTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		//close the browser
-//		driver.close();
+		driver.close();
+	}
+	
+	// BOOKS DROPDOWN
+	
+		@Test
+		void spigelBooksDropdownPageTest() {
+			driver.findElement(By.xpath("//span[text()='Books']")).click();
+			driver.findElement(By.xpath("//span[text()='SPIEGEL-Bestseller']")).click();
+			assertEquals("Shop. SPIEGEL-Bestseller", driver.getTitle());
+		}
+		
+		@Test
+		void cookBooksDropdownPageTest() {
+			driver.findElement(By.xpath("//span[text()='Books']")).click();
+			driver.findElement(By.xpath("//span[text()='Cook and enjoy']")).click();
+			assertEquals("Shop. Cook and enjoy", driver.getTitle());
+		}
+
+	
+	// SPORTS DROPDOWN
+	
+	@Test
+	void basketballSportsDropdownPageTest() {
+		driver.findElement(By.xpath("//span[text()='Sports']")).click();
+		driver.findElement(By.xpath("//span[text()='Basketball']")).click();
+		assertEquals("Shop. Basketball", driver.getTitle());
+	}
+	
+	@Test
+	void golfSportsDropdownPageTest() {
+		driver.findElement(By.xpath("//span[text()='Sports']")).click();
+		driver.findElement(By.xpath("//span[text()='Golf']")).click();
+		assertEquals("Shop. Golf", driver.getTitle());
 	}
 
 	@Test
-	void gotoProductsPageTest() {
-	   
+	void soccerSportsDropdownPageTest() {
+		driver.findElement(By.xpath("//span[text()='Sports']")).click();
+		driver.findElement(By.xpath("//span[text()='Soccer']")).click();
+		assertEquals("Shop. Soccer", driver.getTitle());
 	}
-
 }
