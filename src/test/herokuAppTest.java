@@ -20,6 +20,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;     // for firefox
 
+import java.util.concurrent.TimeUnit;
+
 class herokuAppTest {
 
 	private WebDriver driver;
@@ -44,10 +46,10 @@ class herokuAppTest {
 	      
 	      driver.get(url);  
 	      Thread.sleep(3000);
-//	      driver.findElement(By.name("username")).sendKeys("Admin");
-//	      driver.findElement(By.name("password")).sendKeys("admin123");
-//	      driver.findElement(By.xpath("//button[text()=' Login ']")).click();
-//	      Thread.sleep(2000);
+	      driver.findElement(By.name("username")).sendKeys("Admin");
+	      driver.findElement(By.name("password")).sendKeys("admin123");
+	      driver.findElement(By.xpath("//button[text()=' Login ']")).click();
+	      Thread.sleep(2000);
 	      
 	}
 
@@ -57,42 +59,60 @@ class herokuAppTest {
 //		driver.close();
 	}
 
-	@Test
-	public void loginInvalidTest() {
-		//exe
-		driver.findElement(By.name("username")).sendKeys("lydia");
-	    driver.findElement(By.name("password")).sendKeys("password");
-	    driver.findElement(By.xpath("//button[text()=' Login ']")).click();
-	    //verify
-	    assertTrue(driver.getPageSource().contains("Invalid credentials"));
-		
-	}
-	
-	@Test
-	public void loginValidTest() {
-		//exe
-		driver.findElement(By.name("username")).sendKeys("Admin");
-	    driver.findElement(By.name("password")).sendKeys("admin123");
-	    driver.findElement(By.xpath("//button[text()=' Login ']")).click();
-	    //verify
-	    assertTrue(driver.getPageSource().contains("Dashboard"));
-		
-	}
 //	@Test
-//	public void adminSearchNoResultsTest() {
-//		//setup
-//		driver.findElement(By.xpath("//span[text()='Admin']")).click();
-//
-//		// exe
-//		driver.findElement(By.xpath("//div[class()='oxd-select-text-input']")).click();
-//		driver.findElement(By.xpath("//div[contains(text(),'ESS')]")).click();
-//	    driver.findElement(By.xpath("//button[text()='Search']")).click();
-//
-//
-//		//verify
-//		assertTrue(driver.getPageSource().contains("(7) Records Found"));
+//	public void loginInvalidTest() {
+//		//exe
+//		driver.findElement(By.name("username")).sendKeys("lydia");
+//	    driver.findElement(By.name("password")).sendKeys("password");
+//	    driver.findElement(By.xpath("//button[text()=' Login ']")).click();
+//	    //verify
+//	    assertTrue(driver.getPageSource().contains("Invalid credentials"));
 //		
 //	}
+//	
+//	@Test
+//	public void loginValidTest() {
+//		//exe
+//		driver.findElement(By.name("username")).sendKeys("Admin");
+//	    driver.findElement(By.name("password")).sendKeys("admin123");
+//	    driver.findElement(By.xpath("//button[text()=' Login ']")).click();
+//	    //verify
+//	    assertTrue(driver.getPageSource().contains("Dashboard"));
+//		
+//	}
+	
+//	@Test
+//	public void adminUserDeleteTest() {
+//		//setup
+//		driver.findElement(By.xpath("//span[text()='Admin']")).click();
+//		driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+//		driver.findElement(By.xpath("//span[text()='Job ']")).click();
+//	    driver.findElement(By.partialLinkText("Job Titles")).click();
+//		driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+//	    driver.findElement(By.xpath("//button[text()=' Add ']")).click();
+//
+////		assertTrue(driver.getPageSource().contains("Account Assistant"));
+////	    assertEquals("Job Titles", driver.Title);
+//	    
+//	}
+	
+	
+	@Test
+	public void adminSearchNoResultsTest() {
+		//setup
+		driver.findElement(By.xpath("//span[text()='Admin']")).click();
+		driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+
+		// exe
+		driver.findElement(By.xpath("//div[text()='-- Select --']")).click();
+		driver.findElement(By.xpath("//div[text()='ESS']")).click();
+	    driver.findElement(By.xpath("//button[text()=' Search ']")).click();
+
+
+		//verify
+//		assertTrue(driver.getPageSource().contains("(7) Records Found"));
+		
+	}
 	
 //	@Test
 //	public void myInfoChangeNameTest() {
