@@ -433,8 +433,36 @@ class bearstoreTest {
 		assertEquals("Shop. Gift cards", driver.getTitle());
 	}
 	
-	 ////STILL NEED FEATURED PRODUCTS AND NEWS FOR HOME PAGE ////
+	@Test
+	void cubeChairHomePageTest() {
+		driver.findElement(By.xpath("//*[@id=\"artlist-6972552694\"]/article[10]/h3/a/span")).click();
+		assertEquals("Shop. Cube Chair", driver.getTitle());
+	}
+
 	
+	@Test
+	void viewNewsHomePageTest() {
+		driver.findElement(By.xpath("//*[@id=\"content-center\"]/div/div/div[4]/div[1]/div[2]/a[2]")).click();
+		assertEquals("Shop. News Archive", driver.getTitle());
+	}
+	
+	@Test
+	void firstModernTextHomePageTest() {
+		driver.findElement(By.xpath("//*[@id=\"content-center\"]/div/div/div[4]/div[2]/div/div/article[1]/div[2]/h4/a")).click();
+		assertEquals("Shop. The first modern automobile", driver.getTitle());
+	}
+	
+	@Test
+	void firstModernPhotoHomePageTest() {
+		driver.findElement(By.xpath("//*[@id=\"content-center\"]/div/div/div[4]/div[2]/div/div/article[1]/div[1]/a/img")).click();
+		assertEquals("Shop. The first modern automobile", driver.getTitle());
+	}
+	
+	@Test
+	void readMoreHomePageTest() {
+		driver.findElement(By.xpath("//*[@id=\"content-center\"]/div/div/div[4]/div[2]/div/div/article[1]/div[2]/div[2]/a")).click();
+		assertEquals("Shop. The first modern automobile", driver.getTitle());
+	}
 	
 	
 	///// FOOTER /////
@@ -506,5 +534,27 @@ class bearstoreTest {
 	void conditionsFooterTest() {
 		driver.findElement(By.xpath("(//span[text()='Conditions of use'])[2]")).click();
 		assertEquals("Shop. Conditions of use", driver.getTitle());
+	}
+	
+	@Test
+	void facebookFooterTest() {
+		driver.findElement(By.xpath("//*[@id=\"footer\"]/div[1]/div/div/div/a[1]/i")).click();
+		assertEquals("https://bearstore-testsite.smartbear.com/", driver.getCurrentUrl());
+	}
+	
+	@Test
+	void validEmailFooterTest() {
+		driver.findElement(By.xpath("//*[@id=\"newsletter-email\"]")).sendKeys("lcs6bak@virginia.edu");
+		driver.findElement(By.xpath("//*[@id=\"newsletter-unsubscribe\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"newsletter-subscribe-button\"]/i")).click();
+		assertTrue(driver.getPageSource().contains("alert-success"));
+	}
+	
+	@Test
+	void invalidEmailFooterTest() {
+		driver.findElement(By.xpath("//*[@id=\"newsletter-email\"]")).sendKeys("lcs6bak");
+		driver.findElement(By.xpath("//*[@id=\"newsletter-subscribe\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"newsletter-subscribe-button\"]/i")).click();
+		assertTrue(driver.getPageSource().contains("danger"));
 	}
 }
